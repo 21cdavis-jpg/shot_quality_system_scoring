@@ -828,7 +828,7 @@ function App() {
               <div>
                 {/* 1. OFFENSIVE SUMMARY LEADERBOARD */}
                 <h3 style={{ textAlign: 'left', color: '#2c3e50', margin: '20px 0 10px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  🏀 1. Team Offensive Performance Summary
+                  🏀 Team Offensive Performance Summary
                 </h3>
                 <SortableLeagueTable 
                   data={leagueSummary}
@@ -851,7 +851,7 @@ function App() {
 
                 {/* 2. DEFENSIVE SUMMARY LEADERBOARD */}
                 <h3 style={{ textAlign: 'left', color: '#c0392b', margin: '30px 0 10px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  🛡️ 2. Team Defensive Performance Summary
+                  🛡️ Team Defensive Performance Summary
                 </h3>
                 <SortableLeagueTable 
                   data={leagueSummary}
@@ -874,7 +874,7 @@ function App() {
 
                 {/* 3. SHOT BREAKDOWN OFFENSE LEADERBOARD */}
                 <h3 style={{ textAlign: 'left', color: '#2c3e50', margin: '30px 0 10px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  📊 3. Shot Distribution & Execution Breakdown (Offense)
+                  📊 Shot Distribution & Execution Breakdown (Offense)
                 </h3>
                 <SortableLeagueTable 
                   data={leagueSummary}
@@ -898,7 +898,7 @@ function App() {
 
                 {/* 4. SHOT BREAKDOWN DEFENSE LEADERBOARD */}
                 <h3 style={{ textAlign: 'left', color: '#c0392b', margin: '30px 0 10px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  🎯 4. Shot Distribution & Execution Breakdown (Defense)
+                  🎯 Shot Distribution & Execution Breakdown (Defense)
                 </h3>
                 <SortableLeagueTable 
                   data={leagueSummary}
