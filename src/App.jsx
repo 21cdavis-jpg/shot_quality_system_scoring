@@ -3,6 +3,10 @@ import axios from 'axios';
 import './App.css';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000'
+  : 'https://shot-quality-scoring-system.onrender.com';
+
 function SystemDifferentialChart({ rawData }) {
   const [binSize, setBinSize] = useState(10);
 
@@ -175,7 +179,7 @@ function App() {
   useEffect(() => {
     if (activeTab === 'League') {
       setLeagueLoading(true);
-      axios.get('http://localhost:5000/api/league/summary')
+      axios.get('${API_BASE_URL}/api/league/summary')
         .then(res => {
           setLeagueSummary(res.data);
           setLeagueLoading(false);
@@ -189,7 +193,7 @@ function App() {
 
   const fetchPlays = (gameId) => {
     if (!gameId) return;
-    axios.get(`http://localhost:5000/api/games/${gameId}/plays`)
+    axios.get(`${API_BASE_URL}/api/games/${gameId}/plays`)
       .then(res => setPlays(res.data))
       .catch(err => console.error("Error fetching plays:", err));
   };
@@ -199,7 +203,7 @@ function App() {
       setSelectedTeamStats(null);
       return;
     }
-    axios.get(`http://localhost:5000/api/stats/${teamName}`)
+    axios.get(`${API_BASE_URL}/api/stats/${teamName}`)
       .then(res => {
         console.log("Data received:", res.data);
         setSelectedTeamStats(res.data);
@@ -209,13 +213,13 @@ function App() {
 
   const fetchGameSummary = (gameId) => {
     if (!gameId) return;
-    axios.get(`http://localhost:5000/api/games/${gameId}/summary`)
+    axios.get(`${API_BASE_URL}/api/games/${gameId}/summary`)
       .then(res => setGameSummary(res.data))
       .catch(err => console.error("Summary error:", err));
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/games')
+    axios.get('${API_BASE_URL}/api/games')
       .then(res => {
         setGameData(res.data);
         setLoading(false);
@@ -234,7 +238,7 @@ function App() {
 
   useEffect(() => {
     if (activeTab === 'System' && !systemStats) {
-      axios.get('http://localhost:5000/api/system-accuracy')
+      axios.get('${API_BASE_URL}/api/system-accuracy')
         .then(res => {
           setSystemStats(res.data);
         })
