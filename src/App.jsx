@@ -179,7 +179,7 @@ function App() {
   useEffect(() => {
     if (activeTab === 'League') {
       setLeagueLoading(true);
-      axios.get('${API_BASE_URL}/api/league/summary')
+      axios.get(`${API_BASE_URL}/api/league/summary`)
         .then(res => {
           setLeagueSummary(res.data);
           setLeagueLoading(false);
@@ -219,10 +219,15 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('${API_BASE_URL}/api/games')
+    axios.get(`${API_BASE_URL}/api/games`)
       .then(res => {
+        const gamesArray = Array.isArray(res.data) 
+          ? res.data 
+          : (res.data.games || []);
+
         setGameData(res.data);
         setLoading(false);
+        
         const teams = new Set();
         res.data.forEach(g => {
           teams.add(g.home_team);
@@ -238,7 +243,7 @@ function App() {
 
   useEffect(() => {
     if (activeTab === 'System' && !systemStats) {
-      axios.get('${API_BASE_URL}/api/system-accuracy')
+      axios.get(`${API_BASE_URL}/api/system-accuracy`)
         .then(res => {
           setSystemStats(res.data);
         })
